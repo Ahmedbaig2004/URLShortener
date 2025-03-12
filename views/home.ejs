@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>URL SHORTENER</h1>
+        <div>
+            <form method="POST" action="/url">
+                <label for="">Enter URL to convert</label>
+                <input type="text" name="url" placeholder="http://example.com" >
+                <button style="overflow: auto;;" type="submit">generate</button>
+
+            </form>
+
+        </div>
+        <div>
+            <% if (locals.id) { %>
+                <p>The redirect URL with short ID is http://localhost/5000/<%=id  %></p>
+            <% } %>
+        </div>
+        <div>
+            <% if (locals.urls) { %>
+
+                <table>
+                    <thead>
+                        <th>SNO</th>
+                        <th>ShortId</th>
+                        <th>Redirect URL</th>
+                        <th>Number of Visits</th>
+                    </thead>
+                    <tbody>
+                        
+                            <% urls.forEach((url,index) => { %>
+                                <tr>
+                                    <td><%= index+1 %></td>
+                                    <td><%= url.shortId %></td>
+                                    <td><%= url.redirectUrl %></td>
+                                    <td><%= url.visitHistory.length %></td>
+                                    
+                                </tr>
+                             
+                            <% }) %>
+                            <% } %>
+                        
+                    </tbody>
+        
+                    
+                </table>
+                 
+                
+            
+          
+        </div>
+        
+        
+     
+    
+</body>
+</html>
