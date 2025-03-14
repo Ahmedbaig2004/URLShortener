@@ -8,7 +8,8 @@ const generateShortUrl = async (req,res)=>{
     await URL.create({
         shortId:shortId,
         redirectUrl:body.url,
-        visitHistory:[]
+        visitHistory:[],
+        createdBy:req.user.user
     })
     return res.render("home", { id: shortId, urls: urls });
     
@@ -27,7 +28,7 @@ const createShortId = async(req,res)=>{
             visitHistory:{
                 timestamp:Date.now()
             }
-        }});
+        }},{ new: true });
         res.redirect(entry.redirectUrl)
     }
 
